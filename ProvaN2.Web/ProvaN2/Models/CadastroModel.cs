@@ -113,7 +113,7 @@ namespace ProvaN2.Models
             return ret;
         }
 
-        /* public int Salvar()
+        public int Salvar()
          {
              var ret = 0;
 
@@ -129,25 +129,28 @@ namespace ProvaN2.Models
 
                      if (model == null)
                      {
-                         comando.CommandText = "insert into municipio (nome, codigo, uf) values (@nome, @codigo, @uf); select convert(int, scope_identity())";
+                         comando.CommandText = "insert into pessoa (nome, email, cpf, sexo, idade) values (@nome, @email, @cpf, @sexo, @idade); select convert(int, scope_identity())";
 
                          comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = this.Nome;
-                         comando.Parameters.Add("@ativo", SqlDbType.VarChar).Value = (this.Ativo ? 1 : 0);
-                         comando.Parameters.Add("@id_grupo_produto", SqlDbType.Int).Value = this.IdGrupoProduto;
+                         comando.Parameters.Add("@email", SqlDbType.VarChar).Value = this.Email;
+                         comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = this.CPF;
+                        comando.Parameters.Add("@sexo", SqlDbType.VarChar).Value = this.Sexo;
+                        comando.Parameters.Add("@idade", SqlDbType.Int).Value = this.Idade;
 
-                         ret = (int)comando.ExecuteScalar();
+                        ret = (int)comando.ExecuteScalar();
                      }
                      else
                      {
-                         comando.CommandText = "update municipio set nome=@nome, codigo=@codigo, uf=@uf where id = @id";
+                         comando.CommandText = "update municipio set nome=@nome, cpf=@cpf, email=@email, sexo=@sexo, idade=@idade where id = @id";
 
                          comando.Parameters.Add("@id", SqlDbType.Int).Value = this.Id;
                          comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = this.Nome;
-                         comando.Parameters.Add("@ativo", SqlDbType.VarChar).Value = (this.Ativo ? 1 : 0);
-                         comando.Parameters.Add("@id_grupo_produto", SqlDbType.Int).Value = this.IdGrupoProduto;
+                        comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = this.CPF;
+                        comando.Parameters.Add("@email", SqlDbType.VarChar).Value = this.Email;
+                         comando.Parameters.Add("@sexo", SqlDbType.VarChar).Value = this.Sexo;
+                        comando.Parameters.Add("@idade", SqlDbType.Int).Value = this.Idade;
 
-
-                         if (comando.ExecuteNonQuery() > 0)
+                        if (comando.ExecuteNonQuery() > 0)
                          {
                              ret = this.Id;
                          }
@@ -156,6 +159,6 @@ namespace ProvaN2.Models
              }
 
              return ret;
-         }*/
+         }
     }
 }

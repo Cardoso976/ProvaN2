@@ -23,7 +23,8 @@
                     <table id="grid_cadastro" class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="col-md-4">Nome</th>
+                                <th class="col-md-3">Nome</th>
+                                <th class="col-md-2">CPF</th>
                                 <th>Email</th>
                                 <th class="col-md-2">Idade</th>
                                 <th>Sexo</th>
@@ -38,10 +39,10 @@
                                     linha++;
                                     if (linha <= ViewBag.QuantMaxLinhasPorPagina)
                                     {
-                                       // var ativo = (item.Ativo ? "SIM" : "NÃO");
 
                                         <tr data-id="@item.Id">
                                             <td>@item.Nome</td>
+                                            <td>@item.CPF</td>
                                             <td>@item.Email</td>
                                             <td>@item.Idade</td>
                                             <td>@item.Sexo</td>
@@ -65,8 +66,8 @@
         <p id="pagination-here"></p>
     </section>
 </div>
-
-<div class="modeal_cadastro">
+@Html.Hidden("id_cadastro")
+<div class="modal_cadastro">
     <div id="modal_cadastro" class="form-horizontal invisivel" role="dialog">
         <fieldset>
             <div class="row">
@@ -77,9 +78,27 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("cbx_ativo", "Ativo", new { @class = "col-md-3 control-label" })
+                    @Html.Label("txt_email", "Email", new { @class = "col-md-3 control-label" })
                     <div class="col-md-12">
-                        @Html.CheckBox("cbx_ativo")
+                        @Html.TextBox("txt_email", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("cpf", "Cpf", new { @class = "col-md-3 control-label" })
+                    <div class="col-md-12">
+                        @Html.TextBox("cpf", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("idade", "Idade", new { @class = "col-md-3 control-label" })
+                    <div class="col-md-12">
+                        @Html.TextBox("idade", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("sexo", "Sexo", new { @class = "col-md-3 control-label" })
+                    <div class="col-md-12">
+                        @Html.TextBox("sexo", null, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -99,4 +118,7 @@
 <script src="~/Scripts/jquery-3.2.1.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/bootbox.min.js"></script>
+<script>
+    var url_confirmar = '@Url.Action("Salvar", "Cadastro")';
+</script>
 <script src="~/Scripts/Cadastro/CadastroPessoa.js"></script>

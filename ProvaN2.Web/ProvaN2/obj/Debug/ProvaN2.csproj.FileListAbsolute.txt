@@ -36,7 +36,6 @@ C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\bin\Microsoft.AI.De
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\bin\Microsoft.AI.Web.xml
-C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.csprojResolveAssemblyReference.cache
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.csproj.CoreCompileInputs.cache
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.dll
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.pdb

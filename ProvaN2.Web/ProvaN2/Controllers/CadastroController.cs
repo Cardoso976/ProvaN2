@@ -36,16 +36,14 @@ namespace ProvaN2.Controllers
             return Json(lista);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public JsonResult RecuperarPessoa(int id)
         {
             return Json(CadastroModel.RecuperarPeloId(id));
         }        
 
-       /* [HttpPost]
-        [ValidateAntiForgeryToken]
-        public JsonResult SalvarCidade(CadastroModel model)
+        [HttpPost]        
+        public JsonResult Salvar(CadastroModel model)
         {
             var resultado = "OK";
             var mensagens = new List<string>();
@@ -77,6 +75,6 @@ namespace ProvaN2.Controllers
             }
 
             return Json(new { Resultado = resultado, Mensagens = mensagens, IdSalvo = idSalvo });
-        }*/
+        }
     }
 }
