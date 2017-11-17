@@ -79,6 +79,45 @@ namespace ProvaN2.Models
             return ret;
         }
 
+        public static List<CadastroModel> BuscarPessoa(string Busca)
+        {
+            var ret = new List<CadastroModel>();            
+
+            if (Busca.Length != 1)
+            {
+               Busca = Busca.Replace(" ", "%");
+            }            
+
+            using (var conexao = new SqlConnection())
+            {
+                conexao.ConnectionString = ConfigurationManager.ConnectionStrings["principal"].ConnectionString;
+                conexao.Open();
+                using (var comando = new SqlCommand())
+                {
+                    comando.Connection = conexao;
+                    comando.CommandText = "select * from pessoa where nome like '%' + @nome + '%'";
+
+                    comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = Busca;
+
+                    var reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ret.Add(new CadastroModel
+                        {
+                            Id = (int)reader["id"],
+                            CPF = (string)reader["cpf"],
+                            Nome = (string)reader["nome"],
+                            Email = (string)reader["email"],
+                            Idade = (int)reader["idade"],
+                            Sexo = (string)reader["sexo"]
+                        });
+                    }
+                }
+            }
+
+            return ret;
+        }
+
         public static CadastroModel RecuperarPeloId(int id)
         {
             CadastroModel ret = null;

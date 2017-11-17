@@ -27,8 +27,7 @@ namespace ProvaN2.Controllers
             return View(lista);
         }        
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public JsonResult CadastroPagina(int pagina, int tamPag)
         {
             var lista = CadastroModel.RecuperarLista(pagina, tamPag);
@@ -46,6 +45,12 @@ namespace ProvaN2.Controllers
         public JsonResult ExcluirPessoa(int id)
         {
             return Json(CadastroModel.ExcluirPeloId(id));
+        }
+
+        [HttpPost]
+        public JsonResult BuscarPessoa(string Busca)
+        {
+            return Json(CadastroModel.BuscarPessoa(Busca));
         }
 
         [HttpPost]        
