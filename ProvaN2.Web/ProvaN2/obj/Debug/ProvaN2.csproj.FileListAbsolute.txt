@@ -39,3 +39,4 @@ C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\bin\Microsoft.AI.We
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.csproj.CoreCompileInputs.cache
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.dll
 C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.pdb
+C:\Users\Rodrigo Cardoso\Desktop\ProvaN2\ProvaN2.Web\ProvaN2\obj\Debug\ProvaN2.csprojResolveAssemblyReference.cache

@@ -23,7 +23,7 @@ namespace ProvaN2.Models
 
         public string Sexo { get; set; }
 
-        public string  Email{ get; set; }
+        public string Email { get; set; }
 
         public static int RecuperarQuantidade()
         {
@@ -113,52 +113,78 @@ namespace ProvaN2.Models
             return ret;
         }
 
+        public static bool ExcluirPeloId(int id)
+        {
+            var ret = false;
+
+            if (RecuperarPeloId(id) != null)
+            {
+                using (var conexao = new SqlConnection())
+                {
+                    conexao.ConnectionString = ConfigurationManager.ConnectionStrings["principal"].ConnectionString;
+                    conexao.Open();
+                    using (var comando = new SqlCommand())
+                    {
+                        comando.Connection = conexao;
+                        comando.CommandText = "delete from pessoa where (id = @id)";
+
+                        comando.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+                        ret = (comando.ExecuteNonQuery() > 0);
+                    }
+                }
+            }
+
+            return ret;
+        }
+
         public int Salvar()
-         {
-             var ret = 0;
+        {
+            var ret = 0;
 
-             var model = RecuperarPeloId(this.Id);
+            var model = RecuperarPeloId(this.Id);
 
-             using (var conexao = new SqlConnection())
-             {
-                 conexao.ConnectionString = ConfigurationManager.ConnectionStrings["principal"].ConnectionString;
-                 conexao.Open();
-                 using (var comando = new SqlCommand())
-                 {
-                     comando.Connection = conexao;
+            using (var conexao = new SqlConnection())
+            {
+                conexao.ConnectionString = ConfigurationManager.ConnectionStrings["principal"].ConnectionString;
+                conexao.Open();
+                using (var comando = new SqlCommand())
+                {
+                    comando.Connection = conexao;
 
-                     if (model == null)
-                     {
-                         comando.CommandText = "insert into pessoa (nome, email, cpf, sexo, idade) values (@nome, @email, @cpf, @sexo, @idade); select convert(int, scope_identity())";
+                    if (model == null)
+                    {
+                        comando.CommandText = "insert into pessoa (nome, email, cpf, sexo, idade) values (@nome, @email, @cpf, @sexo, @idade); select convert(int, scope_identity())";
 
-                         comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = this.Nome;
-                         comando.Parameters.Add("@email", SqlDbType.VarChar).Value = this.Email;
-                         comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = this.CPF;
+                        comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = this.Nome;
+                        comando.Parameters.Add("@email", SqlDbType.VarChar).Value = this.Email;
+                        comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = this.CPF;
                         comando.Parameters.Add("@sexo", SqlDbType.VarChar).Value = this.Sexo;
                         comando.Parameters.Add("@idade", SqlDbType.Int).Value = this.Idade;
 
                         ret = (int)comando.ExecuteScalar();
-                     }
-                     else
-                     {
-                         comando.CommandText = "update municipio set nome=@nome, cpf=@cpf, email=@email, sexo=@sexo, idade=@idade where id = @id";
+                    }
+                    else
+                    {
+                        comando.CommandText = "update pessoa set cpf=@cpf, nome=@nome, idade=@idade, sexo=@sexo, email=@email where id = @id";
 
-                         comando.Parameters.Add("@id", SqlDbType.Int).Value = this.Id;
-                         comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = this.Nome;
                         comando.Parameters.Add("@cpf", SqlDbType.VarChar).Value = this.CPF;
-                        comando.Parameters.Add("@email", SqlDbType.VarChar).Value = this.Email;
-                         comando.Parameters.Add("@sexo", SqlDbType.VarChar).Value = this.Sexo;
+                        comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = this.Nome;
                         comando.Parameters.Add("@idade", SqlDbType.Int).Value = this.Idade;
+                        comando.Parameters.Add("@sexo", SqlDbType.VarChar).Value = this.Sexo;
+                        comando.Parameters.Add("@email", SqlDbType.VarChar).Value = this.Email;                        
+                        comando.Parameters.Add("@id", SqlDbType.Int).Value = this.Id;
+
 
                         if (comando.ExecuteNonQuery() > 0)
-                         {
-                             ret = this.Id;
-                         }
-                     }
-                 }
-             }
+                        {
+                            ret = this.Id;
+                        }
+                    }
+                }
+            }
 
-             return ret;
-         }
+            return ret;
+        }
     }
 }

@@ -24,9 +24,9 @@
                         <thead>
                             <tr>
                                 <th class="col-md-3">Nome</th>
-                                <th class="col-md-2">CPF</th>
+                                <th>CPF</th>
                                 <th>Email</th>
-                                <th class="col-md-2">Idade</th>
+                                <th>Idade</th>
                                 <th>Sexo</th>
                                 <th>Ação</th>
                             </tr>
@@ -42,7 +42,7 @@
 
                                         <tr data-id="@item.Id">
                                             <td>@item.Nome</td>
-                                            <td>@item.CPF</td>
+                                            <td class="col-md-3">@item.CPF</td>
                                             <td>@item.Email</td>
                                             <td>@item.Idade</td>
                                             <td>@item.Sexo</td>
@@ -120,5 +120,7 @@
 <script src="~/Scripts/bootbox.min.js"></script>
 <script>
     var url_confirmar = '@Url.Action("Salvar", "Cadastro")';
+    var url_alterar = '@Url.Action("RecuperarPessoa", "Cadastro")';
+    var url_excluir = '@Url.Action("ExcluirPessoa", "Cadastro")';
 </script>
 <script src="~/Scripts/Cadastro/CadastroPessoa.js"></script>

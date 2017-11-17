@@ -25,7 +25,7 @@ namespace ProvaN2.Controllers
             ViewBag.QuantPaginas = (quant / ViewBag.QuantMaxLinhasPorPagina) + difQuantPaginas;
 
             return View(lista);
-        }
+        }        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -36,11 +36,17 @@ namespace ProvaN2.Controllers
             return Json(lista);
         }
 
-        [HttpPost]        
+        [HttpPost]
         public JsonResult RecuperarPessoa(int id)
         {
             return Json(CadastroModel.RecuperarPeloId(id));
-        }        
+        }
+
+        [HttpPost] 
+        public JsonResult ExcluirPessoa(int id)
+        {
+            return Json(CadastroModel.ExcluirPeloId(id));
+        }
 
         [HttpPost]        
         public JsonResult Salvar(CadastroModel model)
