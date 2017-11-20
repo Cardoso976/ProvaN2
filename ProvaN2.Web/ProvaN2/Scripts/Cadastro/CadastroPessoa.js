@@ -41,7 +41,7 @@ function criar_linha_grid(dados) {
     var ret =
         '<tr data-id=' + dados.Id + '>' +
         '<td class="col-md-3">' + dados.Nome + '</td>' +
-        '<td>' + dados.CPF + '</td>' +
+        '<td class="col-md-3">' + dados.CPF + '</td>' +
         '<td class="col-md-2">' + dados.Email + '</td>' +
         '<td>' + dados.Idade + '</td>' +
         '<td>' + dados.Sexo + '</td>' +
@@ -140,4 +140,16 @@ $(document).on('click', '#btn_incluir', function () {
             }
             $('#modal_cadastro').parents('.bootbox').modal('hide');
         });
-    });
+    })
+
+    .on('click', '#btn_buscar', function () {
+        url = url_buscar;
+        var Busca = $('#tx_busca').val();
+        param = { 'Busca': Busca };
+
+        $.post(url, param, function (response) {
+            if (response) {
+
+            }
+        })
+    });    
