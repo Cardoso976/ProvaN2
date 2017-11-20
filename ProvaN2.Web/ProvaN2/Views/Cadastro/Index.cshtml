@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Cadastro de Pessoa";
 }
- 
+
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="~/Content/CadastroPessoa.css" rel="stylesheet" />
 <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
@@ -11,12 +11,16 @@
     <section id="cadastro_cabecalho">
         <h1>@ViewBag.Title</h1>
     </section>
-    <section id="cadastro_conteudo">        
+    <section id="cadastro_conteudo">
         <div id="cabecalho_grid" class="row">
-            <div class="col-md-12">
-                <a id="btn_incluir" class="btn btn-success" role="button"><i class="glyphicon glyphicon-plus"></i> Incluir</a>
-            </div>
-        </div>       
+            <form class="navbar-form">
+                <div class="col-md-12" id="btn">
+                    <a id="btn_incluir" class="btn btn-success" role="button"><i class="glyphicon glyphicon-plus"></i> Incluir</a>
+                    <button type="submit" class="btn btn-default navbar-right" id="btn_buscar">Buscar</button>
+                    <input id="tx_busca" type="text" class="form-control navbar-right" placeholder="Buscar" />                    
+                </div>                
+            </form>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <p id="content">
@@ -122,5 +126,6 @@
     var url_confirmar = '@Url.Action("Salvar", "Cadastro")';
     var url_alterar = '@Url.Action("RecuperarPessoa", "Cadastro")';
     var url_excluir = '@Url.Action("ExcluirPessoa", "Cadastro")';
+    var url_buscar = '@Url.Action("BuscarPessoa", "Cadastro")';
 </script>
 <script src="~/Scripts/Cadastro/CadastroPessoa.js"></script>

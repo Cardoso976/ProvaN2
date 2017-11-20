@@ -9,7 +9,7 @@ namespace ProvaN2.Controllers
 {
     public class CadastroController : Controller
     {
-        private const int _quantMaxLinhasPorPagina = 5;
+        private const int _quantMaxLinhasPorPagina = 10;
 
 
         public ActionResult Index()
