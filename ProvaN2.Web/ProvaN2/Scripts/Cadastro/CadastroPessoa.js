@@ -152,7 +152,4 @@ $(document).on('click', '#btn_incluir', function () {
 
             }
         })
-    });
-
-
-    
+    });    
