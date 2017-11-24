@@ -48,9 +48,9 @@ namespace ProvaN2.Controllers
         }
 
         [HttpPost]
-        public JsonResult BuscarPessoa(string Busca)
+        public JsonResult BuscarPessoa(string filtro)
         {
-            return Json(CadastroModel.BuscarPessoa(Busca));
+            return Json(CadastroModel.BuscarPessoa(filtro));
         }
 
         [HttpPost]        

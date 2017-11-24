@@ -142,14 +142,20 @@ $(document).on('click', '#btn_incluir', function () {
         });
     })
 
-    .on('click', '#btn_buscar', function () {
-        url = url_buscar;
-        var Busca = $('#tx_busca').val();
-        param = { 'Busca': Busca };
+    .on('keyup', '#txt_filtro', function () {
+        var filtro = $(this),
+            param = { 'filtro': filtro.val() };
 
-        $.post(url, param, function (response) {
+        $.post(url_buscar, param, function (response) {
             if (response) {
+                var table = $('#grid_cadastro').find('tbody');
 
+                table.empty();
+                for (var i = 0; i < response.length; i++) {
+                    table.append(criar_linha_grid(response[i]));
+                }
+               /* ddl.siblings().removeClass('active');
+                ddl.addClass('active');*/
             }
-        })
+        });
     });    

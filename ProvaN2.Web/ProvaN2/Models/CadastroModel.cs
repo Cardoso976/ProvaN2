@@ -79,13 +79,13 @@ namespace ProvaN2.Models
             return ret;
         }
 
-        public static List<CadastroModel> BuscarPessoa(string Busca)
+        public static List<CadastroModel> BuscarPessoa(string filtro)
         {
             var ret = new List<CadastroModel>();            
 
-            if (Busca.Length != 1)
+            if (filtro.Length != 1)
             {
-               Busca = Busca.Replace(" ", "%");
+                filtro = filtro.Replace(" ", "%");
             }            
 
             using (var conexao = new SqlConnection())
@@ -95,9 +95,9 @@ namespace ProvaN2.Models
                 using (var comando = new SqlCommand())
                 {
                     comando.Connection = conexao;
-                    comando.CommandText = "select * from pessoa where nome like '%' + @nome + '%'";
+                    comando.CommandText = "select * from pessoa where lower(nome) like '%' + @nome + '%'";
 
-                    comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = Busca;
+                    comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = filtro.ToLower();
 
                     var reader = comando.ExecuteReader();
                     while (reader.Read())
