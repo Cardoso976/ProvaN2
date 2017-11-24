@@ -34,6 +34,11 @@
     overflow-y: hidden;
 }
 
-#btn{
-    margin-top: 5px;
+#mensagem_grid {
+    color: #808080;
+    border: solid 1px;
+    border-color: darkgrey;
+    padding: 50px;
+    font-weight: bold;
+    font-size: x-large;
 }

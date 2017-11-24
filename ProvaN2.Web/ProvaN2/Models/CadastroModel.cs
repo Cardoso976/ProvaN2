@@ -44,7 +44,7 @@ namespace ProvaN2.Models
             return ret;
         }
 
-        public static List<CadastroModel> RecuperarLista(int pagina, int tamPagina)
+        public static List<CadastroModel> RecuperarLista()
         {
             var ret = new List<CadastroModel>();
 
@@ -53,13 +53,11 @@ namespace ProvaN2.Models
                 conexao.ConnectionString = ConfigurationManager.ConnectionStrings["principal"].ConnectionString;
                 conexao.Open();
                 using (var comando = new SqlCommand())
-                {
-                    var pos = (pagina - 1) * tamPagina;
+                {                 
 
                     comando.Connection = conexao;
                     comando.CommandText = string.Format(
-                        "select * from pessoa order by nome offset {0} rows fetch next {1} rows only",
-                        pos > 0 ? pos - 1 : 0, tamPagina);
+                        "select * from pessoa order by nome");
                     var reader = comando.ExecuteReader();
                     while (reader.Read())
                     {

@@ -149,13 +149,19 @@ $(document).on('click', '#btn_incluir', function () {
         $.post(url_buscar, param, function (response) {
             if (response) {
                 var table = $('#grid_cadastro').find('tbody');
-
+                    
                 table.empty();
-                for (var i = 0; i < response.length; i++) {
+                var i;
+                for (i = 0; i < response.length; i++) {
                     table.append(criar_linha_grid(response[i]));
                 }
-               /* ddl.siblings().removeClass('active');
-                ddl.addClass('active');*/
+                if (i == 0) {
+                    $('#mensagem_grid').removeClass('invisivel');
+                    $('#grid_cadastro').addClass('invisivel');                    
+                } else {
+                    $('#mensagem_grid').addClass('invisivel');
+                    $('#grid_cadastro').removeClass('invisivel'); 
+                }
             }
         });
     });    

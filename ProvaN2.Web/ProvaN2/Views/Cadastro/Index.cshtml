@@ -1,6 +1,7 @@
 ﻿@model List<ProvaN2.Models.CadastroModel>
 @{
     ViewBag.Title = "Cadastro de Pessoa";
+    var lista = ViewBag.Lista;
 }
 
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
@@ -18,7 +19,7 @@
                     <a id="btn_incluir" class="btn btn-success" role="button"><i class="glyphicon glyphicon-plus"></i> Incluir</a>
                 </div>
                 <div class="col-md-8" align="right">
-                    @Html.TextBox("txt_filtro", null, new { @class = "form-control", @placeholder = "Busca"})
+                    @Html.TextBox("txt_filtro", null, new { @class = "form-control", @placeholder = "Busca" })
                 </div>
             </div>
         </div>
@@ -38,34 +39,34 @@
                         </thead>
                         <tbody>
                             @{
-                                var linha = 0;
+
                                 foreach (var item in Model)
                                 {
-                                    linha++;
-                                    if (linha <= ViewBag.QuantMaxLinhasPorPagina)
-                                    {
 
-                                        <tr data-id="@item.Id">
-                                            <td>@item.Nome</td>
-                                            <td class="col-md-3">@item.CPF</td>
-                                            <td>@item.Email</td>
-                                            <td>@item.Idade</td>
-                                            <td>@item.Sexo</td>
-                                            <td>
-                                                <a class="btn btn-primary btn-alterar" role="button"><i class="glyphicon glyphicon-pencil"></i> Alterar</a>
-                                                <a class="btn btn-danger btn-excluir" role="button"><i class="glyphicon glyphicon-trash"></i> Excluir</a>
-                                            </td>
-                                        </tr>
-                                    }
-                                    else
-                                    {
-                                        break;
-                                    }
+
+                                    <tr data-id="@item.Id">
+                                        <td>@item.Nome</td>
+                                        <td class="col-md-3">@item.CPF</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Idade</td>
+                                        <td>@item.Sexo</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-alterar" role="button"><i class="glyphicon glyphicon-pencil"></i> Alterar</a>
+                                            <a class="btn btn-danger btn-excluir" role="button"><i class="glyphicon glyphicon-trash"></i> Excluir</a>
+                                        </td>
+                                    </tr>
+
                                 }
                             }
+
                         </tbody>
                     </table>
                 </p>
+                <div id="mensagem_grid" class="invisivel" style="text-align: center;">
+                    <span>
+                        Nenhum registro encontrado!
+                    </span>
+                </div>
             </div>
         </div>
 
